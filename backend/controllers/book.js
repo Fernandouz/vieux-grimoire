@@ -104,7 +104,7 @@ exports.rateBook = (req, res, next) => {
       notes.forEach((note) => {
         total += note.grade;
       });
-      const newMoyenne = total / (notes.length + 1);
+      const newMoyenne = Math.round((total / (notes.length + 1)) * 100) / 100;
       Book.updateOne(
         { _id: req.params.id },
         {
